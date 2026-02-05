@@ -52,7 +52,7 @@ const App = () => {
         
         {status === 'idle' && (
           <div className="idle-state">
-            <input type="file" accept=".pdf" onChange={handleFileChange} className="hidden-input" id="pdf-upload" hidden />
+            <input type="file" accept=".pdf" onChange={handleMudançadeArquivo} className="hidden-input" id="pdf-upload" hidden />
             <label htmlFor="pdf-upload" className="dropzone-label">
               <p>Arraste ou <span className="highlight-text">clique para selecionar</span> o PDF</p>
               <p className="subtext">Apenas arquivos .pdf</p>

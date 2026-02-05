@@ -7,6 +7,12 @@
   --text-muted: #9ca3af;
 }
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .container {
   min-height: 100vh;
   background-color: var(--bg-color);

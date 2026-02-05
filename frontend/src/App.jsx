@@ -24,7 +24,7 @@ const App = () => {
 
     const handleUpload = async (arquivoParaResumir) => {
         setstatus("Carregando....");
-
+        console.log (API_URL);
         const formData = new FormData();
         formData.append("file", arquivoParaResumir);
 
@@ -34,7 +34,7 @@ const App = () => {
                 headers: {
         'Content-Type': 'multipart/form-data'
       }
-    });
+    });console.log("Resposta do servidor:", response.data)
 
             setTimeout(() => {
                 setresumo(response.data.summary);
@@ -75,7 +75,7 @@ const App = () => {
         {status === 'result' && (
           <div className="summary-content">
             <h2 className="summary-title">Resumo Gerado:</h2>
-            <p>{summary}</p>
+            <p>{resumo}</p>
             <button onClick={() => setStatus('idle')} className="btn-reset">
               Resumir outro arquivo
             </button>

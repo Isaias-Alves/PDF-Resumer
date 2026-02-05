@@ -40,3 +40,11 @@ async def summarize_pdf(file: UploadFile = File(...)):
     
  except Exception as e:
         return {"error": str(e)}, 500
+ 
+if __name__ == "__main__":
+    import uvicorn
+    port_env = int(os.getenv("PORT", 8000))
+    
+    print(f"🚀 Servidor rodando na porta: {port_env}")
+    
+    uvicorn.run(app, host="0.0.0.0", port=port_env)

@@ -8,6 +8,7 @@ const App = () => {
     const [arquivo, setarquivo] = useState(null);
     const [status, setstatus] = useState("idle");
     const [resumo, setresumo] = useState("");
+    const API_URL = import.meta.env.VITE_API_URL;
 
     const handleMudançadeArquivo = (e) => {
 
@@ -28,12 +29,16 @@ const App = () => {
         formData.append("file", arquivoParaResumir);
 
         try {
-            // TODO: Descomentar após o backend ser feito.    
-            // const response = await axios.post("http://localhost:8000/summarize", formData, {
+
+            const response = await axios.post(`${API_URL}/summarize`, formData, {
+                headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
 
             setTimeout(() => {
-                setresumo("Resumo de exemplo: Este é um resumo gerado para fins de demonstração.");
-                setstatus("idle");
+                setresumo(response.data.summary);
+                setstatus("result");
             }, 3000);
 
         }catch (error) {

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import "./app.css";
-
+import ReactMarkdown from 'react-markdown';
 
 const App = () => { 
 
@@ -73,14 +73,21 @@ const App = () => {
         )}
 
         {status === 'result' && (
-          <div className="summary-content">
-            <h2 className="summary-title">Resumo Gerado:</h2>
-            <p>{resumo}</p>
-            <button onClick={() => setStatus('idle')} className="btn-reset">
-              Resumir outro arquivo
-            </button>
-          </div>
-        )}
+  <div className="summary-container">
+    <h2 className="text-2xl font-bold mb-4 text-green-400">Resumo Gerado</h2>
+    
+    <div className="prose prose-invert max-w-none bg-gray-800 p-6 rounded-lg border border-gray-700">
+      <ReactMarkdown>{resumo}</ReactMarkdown>
+    </div>
+
+    <button 
+      onClick={() => setstatus('idle')}
+      className="mt-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition"
+    >
+      Resumir outro arquivo
+    </button>
+  </div>
+)}
       </div>
     </div>
 
